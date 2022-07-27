@@ -1,0 +1,45 @@
+/* geral */
+* {
+    margin:0;
+    padding:0;
+}
+/* header */
+header {
+    display: flex;
+    flex:row;
+    align-items: center;
+    box-sizing: border-box;
+    width:100%;
+    justify-content: space-between;
+    background-color: lightgray;
+    border-bottom: 2px black solid;
+    padding: 20px;
+    gap:20px;
+}
+header h1 {
+    font-size:48px;
+}
+nav ul {
+    display: flex;
+    gap:20px;
+    list-style: none;
+}
+nav a {
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+    color:black;
+}
+nav a:hover {
+    color:blue;
+}
+.quote p {
+    font-size:20px;
+    /* text-align: center; */
+}   
+.quote div:first-child {
+    font-style: italic;
+}
+.quote div:last-child {
+    font-weight: bold;
+}
