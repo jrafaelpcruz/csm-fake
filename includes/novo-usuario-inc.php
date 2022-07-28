@@ -5,6 +5,9 @@
         $email = $_POST["email"];
         $senha = $_POST["pwd"];
         $senhaRp = $_POST["pwdr"];
+        $imagemp = $_POST["imagemp"];
+        $faceb = $_POST["faceb"];
+        $twitter = $_POST["twitter"];
 
         require_once 'config.php';
         require_once 'functions.php';
@@ -26,8 +29,8 @@
             exit();
         }
         
-        criarUsuario($conn, $nome, $email, $usuario, $senha);
+        criarUsuario($conn, $nome, $email, $usuario, $senha, $imagemp, $faceb, $twitter);
 
     } else {
-        header("location: ../index.php?page=criar");
+        header("location: ../index.php?page=criar&error=none");
         }

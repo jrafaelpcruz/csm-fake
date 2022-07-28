@@ -9,7 +9,6 @@
 <body>
     <header><?php include_once 'includes/header.php' ?></header>
     <main>
-        <section>
             <?php
             switch(@$_REQUEST["page"]) {
                 case 'criar':
@@ -26,9 +25,9 @@
                     break;
                 default:
                     if (isset($_SESSION["useruid"])) {
-                        echo "Olá ".$_SESSION["useruid"].".";
+                        echo "<div class='form-titulo'>Olá ".$_SESSION["useruid"].".</div>";
                     } else {
-                        echo "Olá visitante.";
+                        echo "<div class='form-titulo'>Olá visitante.</div>";
                     }
             }
             ?>

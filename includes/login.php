@@ -1,3 +1,7 @@
+<div class="form-titulo">
+    <h1>Logar!</h1>
+</div>
+<section>
 <form action="includes/login-inc.php" method="POST">
    <div>
         <label>Usuário:</label>

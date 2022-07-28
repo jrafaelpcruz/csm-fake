@@ -1,0 +1,26 @@
+CREATE TABLE type (
+    typeId int(11) NOT NULL PRIMARY KEY,
+    typeName varchar(128) NOT NULL,
+    typeAdm bool NOT NULL,
+    typeManager bool NOT NULL,
+    typeMod bool NOT NULL
+);
+
+CREATE TABLE users (
+    usersId int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    usersName varchar(128) NOT NULL,
+    usersEmail varchar(128) NOT NULL,
+    usersUid varchar(128) NOT NULL,
+    usersPwd varchar(128) NOT NULL,
+    typeId int(11),
+    usersImg varchar(128),
+    usersFaceb varchar(128),
+    usersTwitter varchar(128),
+    FOREIGN KEY (typeId) REFERENCES type(typeId)
+);
+
+INSERT INTO type (typeId, typeName, typeAdm, typeManager, typeMod) VALUES
+(1, 'usuario',0,0,0),
+(2, 'moderador',0,0,1),
+(3, 'manager',0,1,1),
+(4, 'adm', 1,1,1);

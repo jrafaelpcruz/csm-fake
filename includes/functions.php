@@ -49,9 +49,9 @@
 
         mysqli_stmt_close($stmt);
     }
-    function criarUsuario($conn, $nome, $email, $usuario, $senha) {
+    function criarUsuario($conn, $nome, $email, $usuario, $senha, $imagemp, $faceb, $twitter) {
          $resultado;
-         $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ?, ?);";
+         $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, typeId, usersImg, usersFaceb, usersTwitter) VALUES (?, ?, ?, ?, 1, ?, ?, ?);";
          $stmt = mysqli_stmt_init($conn);
          if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("location: ../index.php?page=criar&error=stmtfailed");
@@ -59,11 +59,11 @@
         }
 
         $hashedPwd = password_hash($senha, PASSWORD_DEFAULT);
-        mysqli_stmt_bind_param($stmt, "ssss", $nome, $email, $usuario, $hashedPwd);
+        mysqli_stmt_bind_param($stmt, "sssssss", $nome, $email, $usuario, $hashedPwd,  $imagemp, $faceb, $twitter);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        header("location: ../index.php?page=criar");
+        header("location: ../index.php?page=criar&error=none");
         exit();
     }
     function logarUsuario($conn, $usuario, $senha) {
@@ -83,6 +83,7 @@
             session_start();
             $_SESSION["userid"] = $usuarioExiste["usersId"];
             $_SESSION["useruid"] = $usuarioExiste["usersUid"];
+            $_SESSION["username"] = $usuarioExiste["usersName"];
             header("location: ../index.php");
             exit();
         }

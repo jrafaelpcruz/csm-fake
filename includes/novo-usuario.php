@@ -1,3 +1,7 @@
+<div class="form-titulo">
+    <h1>Sign Up!</h1>
+</div>
+<section>
 <form action="includes/novo-usuario-inc.php" method="POST">
    <div>
         <label>Nome:</label>
@@ -12,6 +16,14 @@
         <input type="email" name="email" required />
    </div>
    <div>
+        <label>Facebook:</label>
+        <input type="text" name="faceb" />
+   </div>
+   <div>
+        <label>Twitter:</label>
+        <input type="text" name="twitter" />
+   </div>
+   <div>
         <label>Senha:</label>
         <input type="password" name="pwd" required />
    </div>
@@ -19,12 +31,18 @@
         <label>Repita a Senha:</label>
         <input type="password" name="pwdr" required />
    </div>
+   <div>
+        <label>Imagem Perfil:</label>
+   </div>
+    <div class="upload-imagem">
+        <input type="file" name="imagemp" />
+    </div>
     <div>
         <button type="submit" name="submit">Enviar</button>
     </div>
 </form>
 
-<div>
+<div class="form-aviso">
 <?php
     if(isset($_GET["error"])) {
         if ($_GET["error"] == "usuarioinvalido") {
@@ -43,3 +61,4 @@
     }
 ?>
 </div>
+</section>

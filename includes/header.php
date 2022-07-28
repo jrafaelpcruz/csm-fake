@@ -2,7 +2,7 @@
     session_start();
 ?>
 <div>
-    <h1>FAKE CSM</h1>
+    <h1><a href='?page=default'>FAKE CSM</a></h1>
 </div>
 <div class="quote">
     <div>
