@@ -83,8 +83,35 @@
             session_start();
             $_SESSION["userid"] = $usuarioExiste["usersId"];
             $_SESSION["useruid"] = $usuarioExiste["usersUid"];
-            $_SESSION["username"] = $usuarioExiste["usersName"];
             header("location: ../index.php");
             exit();
         }
+    }
+    function typeFlag($conn) {
+        $flag;
+        $userid = $_SESSION["userid"];
+        $sql = "SELECT users.typeId, typeName, typeAdm, typeManager, typeMod FROM users JOIN type ON users.typeId = type.typeId WHERE users.usersId ={$userid};"; 
+        $res = $conn->query($sql) or die("erro");
+        $flag = $res->fetch_object(); 
+        return $flag;
+    }
+    function displayMyBlogs($conn) {
+        $res;
+        $userid = $_SESSION["userid"];
+        $sql = "SELECT users.typeId, blogsId, blogsTitle, blogsDesc, blogsKeywords FROM users JOIN blogs ON users.usersId = blogs.usersId WHERE users.usersId = {$userid};";
+        $res = $conn->query($sql) or die("erro");
+        return $res;
+    }
+    function displayOneBlog($row) {
+        $words = $row->blogsKeywords;
+        $words = explode(',',$words);
+        echo "
+            <div class='blog-holder'>
+                <div class='blog-holder-title'>$row->blogsTitle</div>
+                <div>$row->blogsDesc</div>
+                <div class='blog-holder-tags'>";
+        foreach($words as $value) {
+           echo "<div>$value</div>"; 
+        }
+        echo "</div></div>";
     }

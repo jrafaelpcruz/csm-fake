@@ -32,5 +32,5 @@
         criarUsuario($conn, $nome, $email, $usuario, $senha, $imagemp, $faceb, $twitter);
 
     } else {
-        header("location: ../index.php?page=criar&error=none");
+        header("location: ../index.php?page=criar");
         }

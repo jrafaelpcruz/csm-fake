@@ -1,3 +1,6 @@
+
+Tabelas de usuários
+
 CREATE TABLE type (
     typeId int(11) NOT NULL PRIMARY KEY,
     typeName varchar(128) NOT NULL,
@@ -20,7 +23,32 @@ CREATE TABLE users (
 );
 
 INSERT INTO type (typeId, typeName, typeAdm, typeManager, typeMod) VALUES
-(1, 'usuario',0,0,0),
-(2, 'moderador',0,0,1),
-(3, 'manager',0,1,1),
-(4, 'adm', 1,1,1);
+    (1, 'usuario',0,0,0),
+    (2, 'moderador',0,0,1),
+    (3, 'manager',0,1,1),
+    (4, 'adm', 1,1,1);
+
+Tabelas de conteudo
+
+CREATE TABLE blogs (
+    blogsId int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    blogsTitle varchar(128) NOT NULL,
+    blogsDesc text,
+    blogsKeywords varchar(128) NOT NULL,
+    usersId int(11) NOT NULL,
+    FOREIGN KEY (usersId) REFERENCES users(usersId)
+);
+
+CREATE TABLE conteudo (
+    conteudoId int (11) NOT NULL PRIMARY KEY,
+    conteudoTitulo varchar (128) NOT NULL,
+    usersId int(11) NOT NULL,
+    blogsId int (11) NOT NULL,
+    conteudoMain text NOT NULL,
+    tagsId varchar(28) NOT NULL,
+    conteudoImagem varchar(128) NOT NULL,
+    conteudoData date NOT NULL,
+    conteudoHora time NOT NULL,
+    FOREIGN KEY (usersId) REFERENCES users(usersId),
+    FOREIGN KEY (blogsId) REFERENCES blogs(blogsId)
+);

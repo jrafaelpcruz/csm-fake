@@ -1,0 +1,49 @@
+/* geral */
+* {
+    margin:0;
+    padding:0;
+}
+a {
+    text-decoration: none;
+    color:black;
+}
+/* header */
+header {
+    display: flex;
+    flex:row;
+    align-items: center;
+    box-sizing: border-box;
+    width:100%;
+        /* justify-content: space-between; */
+    background-color: lightgray;
+    padding: 5px;
+    gap:20px;
+}
+header h1 {
+    font-size:20px;
+}
+nav ul {
+    display: flex;
+    gap:20px;
+    list-style: none;
+}
+nav a {
+    font-size: 15px;
+    font-weight: bold;
+}
+nav a:hover {
+    color:blue;
+}
+.quote p {
+    display:none;
+}
+/* titulo blog */
+.blog-header {
+    display:flex;
+    flex-flow:column wrap;
+    align-items: center;
+}
+.blog-titulo h1 {
+    font-size:60px;
+    margin:20px 0;
+}
