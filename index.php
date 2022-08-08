@@ -26,9 +26,6 @@
                 case 'sair':
                     include_once 'includes/sair.php';
                     break;
-                case 'displayBlog';
-                    include_once 'includes/display-blog.php';
-                    break;
                 default:
                     if (isset($_SESSION["useruid"])) {
                     /* pegando as informaçes do usuario com a função getUsuario */
@@ -38,7 +35,6 @@
                         echo "<div class='barra-usuario'>";
                             echo "<div class='barra-usuario-imagem'><img src='{$myUser->usersImg}' /></div>";
                             echo "<div class='barra-usuario-titulo'>Olá, <b>{$myUser->usersName}</b>.</div>";
-                            echo "<a href='index-blog.php'>Try me</a>";
                             $res = displayMyBlogs($conn);
                             $qtd = $res->num_rows;
                             if ($qtd > 0) {

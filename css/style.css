@@ -20,8 +20,6 @@ header {
     align-items: center;
     background-color: #ffffd7 ;
     border-bottom: 2px black solid;
-    padding: 20px;
-    box-sizing: border-box;
 }
 .header-bar {
     display: flex;
@@ -31,6 +29,8 @@ header {
     width:100%;
     justify-content: space-between;
     gap:20px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 header h1 {
     font-size:48px;
@@ -49,7 +49,6 @@ nav a:hover {
 }
 .quote p {
     font-size:20px;
-    /* text-align: center; */
 }   
 .quote div:first-child {
     font-style: italic;
@@ -57,6 +56,25 @@ nav a:hover {
 .quote div:last-child {
     font-weight: bold;
 }
+/* header para os blogs: */
+.header-bar-blog {
+    display: flex;
+    flex:row;
+    align-items: center;
+    max-width:1400px;
+    width:100%;
+    gap:20px;
+}
+.header-bar-blog h1 {
+    font-size:30px;
+}
+.header-bar-blog .quote {
+    display:none;
+}
+.header-bar-blog nav a {
+    font-size: 20px;
+}
+
 /* Forms */
 .form-titulo {
     text-align: center;
@@ -154,4 +172,21 @@ button {
     padding:5px 5px;
     border-radius:8px;
     background-color:lightgray;
+}
+/* index-blog */
+.blog-main {
+   display:flex;
+   flex-flow: column wrap;
+   align-items: center;
+   max-width: 1200px;
+   width:100%;
+   margin:0px auto;
+}
+.blog-main h1 {
+    margin:20px 0px;
+    font-size:120px;
+}
+.blog-main-desc {
+    font-size:30px;
+    margin-bottom: 20px;
 }

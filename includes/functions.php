@@ -109,7 +109,7 @@
         $words = explode(',',$words);
         echo "
             <div class='blog-holder'>
-                <div class='blog-holder-title'><a href='?page=displayBlog&blogid=$row->blogsId'>$row->blogsTitle</a></div>
+                <div class='blog-holder-title'><a href='index-blog.php?blogid=$row->blogsId'>$row->blogsTitle</a></div>
                 <div>$row->blogsDesc</div>
                 <div class='blog-holder-tags'>";
         foreach($words as $value) {
@@ -130,7 +130,6 @@
     /* função para exibir o blog selecionado na página display-blog */
     function displayBlog ($conn, $blogid) {
         $actualBlog;
-        $userid = $_SESSION["userid"];
         $sql = "SELECT blogsId, blogsTitle, blogsDesc, blogsKeywords FROM blogs WHERE blogsId = {$blogid};";
         $actualBlog = $conn->query($sql) or die ("erro");
         $actualBlog = $actualBlog->fetch_object();
