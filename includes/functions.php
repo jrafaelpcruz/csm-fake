@@ -135,3 +135,19 @@
         $actualBlog = $actualBlog->fetch_object();
         return $actualBlog;
     }
+    function criarBlog ($conn, $titulo, $desc, $keywords, $userid) {
+         $resultado;
+         $sql = "INSERT INTO blogs (blogsTitle, blogsDesc, blogsKeywords, usersId) VALUES (?, ?, ?, ?);";
+         $stmt = mysqli_stmt_init($conn);
+         if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../index.php?page=criarblog&error=stmtfailed");
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "ssss", $titulo, $desc, $keywords, $userid);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        header("location: ../index.php?page=criarblog&error=none");
+        exit();
+
+    }

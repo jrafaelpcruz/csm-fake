@@ -2,7 +2,7 @@
     <h1>Sign Up!</h1>
 </div>
 <section>
-<form action="includes/novo-usuario-inc.php" method="POST">
+<form action="includes/novo-usuario-inc.php" method="POST" class="form-redux" enctype="multipart/form-data">
    <div>
         <label>Nome:</label>
         <input type="text" name="nome" required />
@@ -35,7 +35,7 @@
         <label>Imagem Perfil:</label>
    </div>
     <div class="upload-imagem">
-        <input type="file" name="imagemp" />
+        <input type="file" name="file" />
     </div>
     <div>
         <button type="submit" name="submit">Enviar</button>

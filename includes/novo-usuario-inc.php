@@ -5,9 +5,17 @@
         $email = $_POST["email"];
         $senha = $_POST["pwd"];
         $senhaRp = $_POST["pwdr"];
-        $imagemp = $_POST["imagemp"];
+        $file = $_FILES['file'];
         $faceb = $_POST["faceb"];
         $twitter = $_POST["twitter"];
+        /* tratamento da imagem de perfil: */
+        $filename = $_FILES['file']['name'];
+            $filetmp = $_FILES['file']['tmp_name'];
+        $filename = $_FILES['file']['name'];
+        $filename = $_FILES['file']['name'];
+        $filename = $_FILES['file']['name'];
+
+
 
         require_once 'config.php';
         require_once 'functions.php';

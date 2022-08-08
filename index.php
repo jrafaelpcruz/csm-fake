@@ -26,6 +26,9 @@
                 case 'sair':
                     include_once 'includes/sair.php';
                     break;
+                case 'criarblog':
+                    include_once 'includes/criar-blog.php';
+                    break;
                 default:
                     if (isset($_SESSION["useruid"])) {
                     /* pegando as informaçes do usuario com a função getUsuario */
@@ -47,6 +50,9 @@
                                     echo "</div>";
                                 }
                         echo "</div>";        
+                        echo "<div class='blog-criar-novo'>";
+                        echo "<div><a href='?page=criarblog'>+Criar Novo blog</a></div>";
+                        echo "</div>";
                     } else {
                         echo "<div class='form-titulo'>Olá visitante.</div>";
                     }

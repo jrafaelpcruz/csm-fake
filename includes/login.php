@@ -2,7 +2,7 @@
     <h1>Logar!</h1>
 </div>
 <section>
-<form action="includes/login-inc.php" method="POST">
+<form action="includes/login-inc.php" method="POST" class="form-redux">
    <div>
         <label>Usuário:</label>
         <input type="text" name="usuario" required />
