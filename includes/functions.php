@@ -95,6 +95,7 @@
         $flag = $res->fetch_object(); 
         return $flag;
     }
+    /* funcao para pegar todos os blogs do usuario */
     function displayMyBlogs($conn) {
         $res;
         $userid = $_SESSION["userid"];
@@ -102,16 +103,36 @@
         $res = $conn->query($sql) or die("erro");
         return $res;
     }
+    /* funcao para exibir um blog */ 
     function displayOneBlog($row) {
         $words = $row->blogsKeywords;
         $words = explode(',',$words);
         echo "
             <div class='blog-holder'>
-                <div class='blog-holder-title'>$row->blogsTitle</div>
+                <div class='blog-holder-title'><a href='?page=displayBlog&blogid=$row->blogsId'>$row->blogsTitle</a></div>
                 <div>$row->blogsDesc</div>
                 <div class='blog-holder-tags'>";
         foreach($words as $value) {
            echo "<div>$value</div>"; 
         }
-        echo "</div></div>";
+        echo "</div>";
+        
+    }
+    /* funcao para trazer as informaçes do usuario logado. */
+    function getUsuario($conn) {
+        $myUser;
+        $userid = $_SESSION["userid"];
+        $sql = "SELECT usersName, usersImg, usersEmail, usersFaceb, usersTwitter FROM users WHERE usersId = {$userid}";
+        $myUser = $conn->query($sql) or die("erro");
+        $myUser = $myUser->fetch_object();
+        return $myUser;
+    }
+    /* função para exibir o blog selecionado na página display-blog */
+    function displayBlog ($conn, $blogid) {
+        $actualBlog;
+        $userid = $_SESSION["userid"];
+        $sql = "SELECT blogsId, blogsTitle, blogsDesc, blogsKeywords FROM blogs WHERE blogsId = {$blogid};";
+        $actualBlog = $conn->query($sql) or die ("erro");
+        $actualBlog = $actualBlog->fetch_object();
+        return $actualBlog;
     }

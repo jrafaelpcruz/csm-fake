@@ -26,28 +26,38 @@
                 case 'sair':
                     include_once 'includes/sair.php';
                     break;
+                case 'displayBlog';
+                    include_once 'includes/display-blog.php';
+                    break;
                 default:
                     if (isset($_SESSION["useruid"])) {
-                        echo "<div class='form-titulo'>Olá ".$_SESSION["useruid"].".</div>";
+                    /* pegando as informaçes do usuario com a função getUsuario */
+                        include_once "includes/functions.php";
+                        include_once "includes/config.php";
+                        $myUser = getUsuario($conn);
+                        echo "<div class='barra-usuario'>";
+                            echo "<div class='barra-usuario-imagem'><img src='{$myUser->usersImg}' /></div>";
+                            echo "<div class='barra-usuario-titulo'>Olá, <b>{$myUser->usersName}</b>.</div>";
+                            echo "<a href='index-blog.php'>Try me</a>";
+                            $res = displayMyBlogs($conn);
+                            $qtd = $res->num_rows;
+                            if ($qtd > 0) {
+                                echo "<div>Aqui estão seus blogs:</div>";
+                            }
+                        echo "</div>";
+                        echo "<div class='blog-grid'>";
+                            while($row = $res->fetch_object()) {
+                                    displayOneBlog($row);
+                                    echo "</div>";
+                                }
+                        echo "</div>";        
                     } else {
                         echo "<div class='form-titulo'>Olá visitante.</div>";
                     }
             }
             ?>
         </section>
-    <div class="blog-grid">
-        <?php
-            if (isset($_SESSION["useruid"])) {
-                include_once "includes/config.php";
-                include_once "includes/functions.php";
-                $res = displayMyBlogs($conn);
-                /* var_dump($res); */ 
-                /* acho válido colocar um if aqui depois pra verificar se tem blogs pra mostra ou não */
-                while($row = $res->fetch_object()) {
-                    displayOneBlog($row);
-                }
-            }
-        ?>
+    
     </div>
     </main>    
     <footer><?php include_once 'includes/footer.php' ?></footer>
