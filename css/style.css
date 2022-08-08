@@ -47,15 +47,6 @@ nav a {
 nav a:hover {
     color:blue;
 }
-.quote p {
-    font-size:20px;
-}   
-.quote div:first-child {
-    font-style: italic;
-}
-.quote div:last-child {
-    font-weight: bold;
-}
 /* header para os blogs: */
 .header-bar-blog {
     display: flex;
@@ -68,13 +59,9 @@ nav a:hover {
 .header-bar-blog h1 {
     font-size:30px;
 }
-.header-bar-blog .quote {
-    display:none;
-}
 .header-bar-blog nav a {
     font-size: 20px;
 }
-
 /* Forms */
 .form-titulo {
     text-align: center;
@@ -130,12 +117,11 @@ button {
     box-sizing: border-box;
 }
 .barra-usuario-imagem {
-   /* border:2px black solid; */
-   width:10%;
+    width:25%;
+    max-width:300px;
 }
 .barra-usuario-imagem img {
-    padding:5px;
-    box-sizing: border-box;
+   border:2px black solid;
 }
 .barra-usuario-titulo {
    font-size: 35px;

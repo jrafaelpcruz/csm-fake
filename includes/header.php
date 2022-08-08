@@ -21,14 +21,6 @@
     <div>
     <h1><a href='index.php?page=default'><?php echo "$headerLogo"; ?></a></h1>
     </div>
-    <div class="quote">
-        <div>
-            <p>"Faça elevar o cosmo no seu coração."</p>
-        </div>
-        <div>
-            <p>-Saint Seiya</p>
-        </div>
-    </div>
     <div>
         <nav>
             <ul>
