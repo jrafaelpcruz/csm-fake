@@ -49,6 +49,33 @@
 
         mysqli_stmt_close($stmt);
     }
+    function uploadFile($conn, $fileName, $filetmp, $fileSize, $fileError, $fileType) {
+
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+
+        $allowed = array('jpg','jpeg','png','pdf');
+        /* verificaçoes do arquivo do upload */
+        if ( ! in_array($fileActualExt, $allowed)) {
+            header("location: ../index.php?page=criar&error=filetypeinvalido");
+            exit();
+        }
+        if ( ! $fileError === 0) {
+            header("location: ../index.php?page=criar&error=fileerror");
+            exit();
+        }
+        if ($fileSize > 5000000) {
+            header("location: ../index.php?page=criar&error=filesizeinvalido");
+            exit();
+        }
+        /* fazendo o upload do arquivo para o server */
+        $fileNameNew = uniqid('', true).".".$fileActualExt;
+        $fileDestination = '../img/profile/'.$fileNameNew;
+        move_uploaded_file($filetmp, $fileDestination);
+        $imagemp = 'img/profile/'.$fileNameNew;
+        return $imagemp;
+
+    }
     function criarUsuario($conn, $nome, $email, $usuario, $senha, $imagemp, $faceb, $twitter) {
          $resultado;
          $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, typeId, usersImg, usersFaceb, usersTwitter) VALUES (?, ?, ?, ?, 1, ?, ?, ?);";

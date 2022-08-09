@@ -15,26 +15,9 @@
         $fileError = $_FILES['file']['error'];
         $fileType = $_FILES['file']['type'];
 
-        $fileExt = explode('.', $fileName);
-        $fileActualExt = strtolower(end($fileExt));
-
-        $allowed = array('jpg','jpeg','png','pdf');
-        /* verificaçoes do arquivo do upload */
-        if ( ! in_array($fileActualExt, $allowed)) {
-            header("location: ../index.php?page=criar&error=filetypeinvalido");
-            exit();
-        }
-        if ( ! $fileError === 0) {
-            header("location: ../index.php?page=criar&error=fileerror");
-            exit();
-        }
-        if ($fileSize > 5000000) {
-            header("location: ../index.php?page=criar&error=filesizeinvalido");
-            exit();
-        }
-
         require_once 'config.php';
         require_once 'functions.php';
+
 
         if (usuarioInvalido($usuario) !== false) {
             header("location: ../index.php?page=criar&error=usuarioinvalido");
@@ -53,12 +36,7 @@
             exit();
         }
 
-        /* fazendo o upload do arquivo para o server */
-        $fileNameNew = uniqid('', true).".".$fileActualExt;
-        $fileDestination = '../img/profile/'.$fileNameNew;
-        $imagemp = 'img/profile/'.$fileNameNew;
-        move_uploaded_file($filetmp, $fileDestination);
-
+        $imagemp = uploadFile($conn, $fileName, $filetmp, $fileSize, $fileError, $fileType);
         criarUsuario($conn, $nome, $email, $usuario, $senha, $imagemp, $faceb, $twitter);
 
     } else {
